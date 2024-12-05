@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://7wy4rpgf0k20"]
+[gd_scene load_steps=20 format=3 uid="uid://7wy4rpgf0k20"]
 
 [ext_resource type="Script" path="res://sources/enemy/scripts/enemy_close.gd" id="1_1gt6t"]
 [ext_resource type="Texture2D" uid="uid://bjsq1ub24gpvw" path="res://assets/enemy/enemy_close.png" id="1_03116"]
+[ext_resource type="Script" path="res://sources/component/health_component.gd" id="3_u5vxl"]
 [ext_resource type="Script" path="res://sources/component/spawner_component.gd" id="3_udujr"]
 [ext_resource type="PackedScene" uid="uid://du6ghn18fnsc7" path="res://sources/enemy/enemy_close_explosion.tscn" id="4_x6dqa"]
 [ext_resource type="Script" path="res://sources/component/shake_component.gd" id="5_hcywn"]
@@ -108,6 +109,10 @@ autoplay = "run"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_klsfd")
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hurtbox")]
+script = ExtResource("3_u5vxl")
+hurtbox = NodePath("../HurtboxComponent")
 
 [node name="ShakeComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("5_hcywn")

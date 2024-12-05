@@ -5,6 +5,7 @@ const MAX_SPEED := 40.0
 @onready var projectiles_container := get_tree().get_first_node_in_group("projectiles")
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health_component: HealthComponent = $HealthComponent
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 @onready var laser_spawner: SpawnerComponent = $LaserSpawner
 
@@ -15,6 +16,7 @@ var input_vector: Vector2
 func _ready() -> void:
 	add_to_group("player")
 
+	health_component.depleted.connect(get_tree().call_deferred.bind("reload_current_scene"))
 	hurtbox_component.hurt.connect(print.bind("hurt").unbind(1))
 
 func _unhandled_input(event: InputEvent) -> void:

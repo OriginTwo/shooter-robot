@@ -4,6 +4,7 @@ const MAX_SPEED := 30.0
 
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health_component: HealthComponent = $HealthComponent
 
 @onready var player := get_tree().get_first_node_in_group("player")
 
@@ -13,6 +14,9 @@ func _ready() -> void:
 	state_machine.add_state("chase", Callable(), state_chase_physics_process)
 	state_machine.add_state("attack", Callable(), Callable(), state_attack_enter)
 	state_machine.set_initial_state("chase")
+
+	#TODO: death effect
+	health_component.depleted.connect(queue_free)
 
 func _process(delta: float) -> void:
 	state_machine.process(delta)

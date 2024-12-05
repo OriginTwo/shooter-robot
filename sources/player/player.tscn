@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://cm5wx8q6yihns"]
+[gd_scene load_steps=20 format=3 uid="uid://cm5wx8q6yihns"]
 
 [ext_resource type="Script" path="res://sources/player/scripts/player.gd" id="1_igoof"]
 [ext_resource type="Texture2D" uid="uid://b43fmtupuh2rv" path="res://assets/player/player.png" id="1_j3g8f"]
+[ext_resource type="Script" path="res://sources/component/health_component.gd" id="3_eo0ex"]
 [ext_resource type="Script" path="res://sources/component/hurtbox_component.gd" id="3_yf4sa"]
 [ext_resource type="Script" path="res://sources/component/spawner_component.gd" id="4_cp4yt"]
 [ext_resource type="PackedScene" uid="uid://c821weiyjnml8" path="res://sources/player/laser.tscn" id="5_bsaob"]
@@ -108,6 +109,11 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_jexeu")
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hurtbox")]
+script = ExtResource("3_eo0ex")
+max_health = 5
+hurtbox = NodePath("../HurtboxComponent")
 
 [node name="HurtboxComponent" type="Area2D" parent="."]
 collision_layer = 2

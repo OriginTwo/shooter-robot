@@ -10,6 +10,8 @@ THEME: EVERYTHING HAS A COST
 * player is robot powered by solar cells, so energy is regenerated
 	automatically during the day
 
+* everything costs energy
+
 * subsystems (access through simple ui):
 	* power:
 		* reroute power to different subsystems
@@ -39,13 +41,14 @@ TODO:
 		[X] spawner
 		[X] hitbox
 		[X] hurtbox
-		[ ] health
+		[X] health
 		[ ] flash
 		[X] shake
 	[X] callable state machine
 	[ ] energy
 	[ ] power management system
 	[ ] synthesizer system
+	[ ] shoot cooldown
 	- enemy
 		[X] close range (walk into player)
 		[ ] long range  (shoot laser at player)

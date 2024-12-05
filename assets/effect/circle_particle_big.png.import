@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgo1ldorh3xew"
-path="res://.godot/imported/test_isometric.png-a80fe3a2efc04f2793424f2b4659b326.ctex"
+uid="uid://wnrf0yovpbmf"
+path="res://.godot/imported/circle_particle_big.png-53a791d85709292e7a1c098bb5893277.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/test_isometric.png"
-dest_files=["res://.godot/imported/test_isometric.png-a80fe3a2efc04f2793424f2b4659b326.ctex"]
+source_file="res://assets/effect/circle_particle_big.png"
+dest_files=["res://.godot/imported/circle_particle_big.png-53a791d85709292e7a1c098bb5893277.ctex"]
 
 [params]
 

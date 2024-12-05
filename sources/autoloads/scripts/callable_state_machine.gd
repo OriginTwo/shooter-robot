@@ -5,15 +5,15 @@ var current_state_name: StringName
 
 func add_state(
 		name: StringName,
-		process: Callable,
-		physics := Callable(),
+		update := Callable(),
+		physics_update := Callable(),
 		enter := Callable(),
 		leave := Callable()):
 	states[name] = {}
-	if process.is_valid():
-		states[name]["process"] = process
-	if physics.is_valid():
-		states[name]["physics"] = physics
+	if update.is_valid():
+		states[name]["process"] = update
+	if physics_update.is_valid():
+		states[name]["physics"] = physics_update
 	if enter.is_valid():
 		states[name]["enter"] = enter
 	if leave.is_valid():
@@ -26,7 +26,7 @@ func process(delta: float):
 	if states[current_state_name].has("process"):
 		states[current_state_name]["process"].call(delta)
 
-func physics(delta: float):
+func physics_process(delta: float):
 	if states[current_state_name].has("physics"):
 		states[current_state_name]["physics"].call(delta)
 

@@ -36,18 +36,18 @@ KNOWN PROBLEM:
 
 TODO:
 	- component:
-		[ ] spawner
-		[ ] hitbox
-		[ ] hurtbox
+		[X] spawner
+		[X] hitbox
+		[X] hurtbox
 		[ ] stats
 		[ ] flash
-		[ ] shake
+		[X] shake
 	[X] callable state machine
 	[ ] energy
 	[ ] power management system
 	[ ] synthesizer system
 	- enemy
-		[ ] close range (walk into player)
+		[X] close range (walk into player)
 		[ ] long range  (shoot laser at player)
 	[ ] day/night cycle
 	[ ] game over

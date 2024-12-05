@@ -1,0 +1,43 @@
+extends CharacterBody2D
+
+const MAX_SPEED := 30.0
+
+@onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+@onready var player := get_tree().get_first_node_in_group("player")
+
+var state_machine := CallableStateMachine.new()
+
+func _ready() -> void:
+	state_machine.add_state("chase", Callable(), state_chase_physics_process)
+	state_machine.add_state("attack", Callable(), Callable(), state_attack_enter)
+	state_machine.set_initial_state("chase")
+
+func _process(delta: float) -> void:
+	state_machine.process(delta)
+
+var first_physics_frame := true
+func _physics_process(delta: float) -> void:
+	if first_physics_frame:
+		first_physics_frame = false
+		return
+	navigation_agent_2d.target_position = player.global_position
+	state_machine.physics_process(delta)
+
+func state_chase_physics_process(_delta: float) -> void:
+	var target_pos := navigation_agent_2d.get_next_path_position()
+	var target_dir := global_position.direction_to(target_pos)
+	velocity = target_dir * MAX_SPEED
+	move_and_slide()
+
+	if navigation_agent_2d.is_navigation_finished():
+		animated_sprite_2d.play("attack")
+		state_machine.change_state("attack")
+
+func state_attack_enter() -> void:
+	await get_tree().create_timer(0.2).timeout
+	$ShakeComponent.shake()
+	await get_tree().create_timer(0.2).timeout
+	$SpawnerComponent.spawn(get_tree().get_first_node_in_group("particles"))
+	queue_free()

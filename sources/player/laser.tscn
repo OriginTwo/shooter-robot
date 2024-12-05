@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://c821weiyjnml8"]
+
+[ext_resource type="Script" path="res://sources/component/projectile_component.gd" id="1_cbctl"]
+[ext_resource type="Texture2D" uid="uid://d1tk0hpo7oyuy" path="res://assets/player/laser.png" id="1_ch85y"]
+[ext_resource type="Script" path="res://sources/component/spawner_component.gd" id="3_rpb8v"]
+[ext_resource type="PackedScene" uid="uid://dk05jyojgtw1y" path="res://sources/player/laser_hit_particle.tscn" id="4_o7hmv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_stf1g"]
+radius = 3.0
+
+[node name="Laser" type="Area2D" node_paths=PackedStringArray("hit_spawner")]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_cbctl")
+hit_spawner = NodePath("SpawnerComponent")
+rotate_hit_spawner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ch85y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_stf1g")
+
+[node name="SpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("3_rpb8v")
+scene = ExtResource("4_o7hmv")

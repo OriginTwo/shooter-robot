@@ -20,4 +20,6 @@ position = Vector2(69, 90)
 [node name="Enemy" parent="." instance=ExtResource("10_hwl8f")]
 position = Vector2(131, 99)
 
+[node name="Projectiles" type="CanvasLayer" parent="." groups=["projectiles"]]
+
 [node name="Particles" type="CanvasLayer" parent="." groups=["particles"]]

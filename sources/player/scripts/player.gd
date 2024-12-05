@@ -2,8 +2,11 @@ extends CharacterBody2D
 
 const MAX_SPEED := 40.0
 
+@onready var projectiles_container := get_tree().get_first_node_in_group("projectiles")
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
+@onready var laser_spawner: SpawnerComponent = $LaserSpawner
 
 var state_machine := CallableStateMachine.new()
 
@@ -13,6 +16,12 @@ func _ready() -> void:
 	add_to_group("player")
 
 	hurtbox_component.hurt.connect(print.bind("hurt").unbind(1))
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("shoot"):
+		var mouse_pos := get_viewport().get_mouse_position()
+		var laser := laser_spawner.spawn(projectiles_container) as ProjectileComponent
+		laser.direction = laser_spawner.global_position.direction_to(mouse_pos)
 
 func _physics_process(_delta: float) -> void:
 	input_vector.x = Input.get_axis("move_w", "move_e")

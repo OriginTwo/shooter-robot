@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://7wy4rpgf0k20"]
+[gd_scene load_steps=19 format=3 uid="uid://7wy4rpgf0k20"]
 
 [ext_resource type="Script" path="res://sources/enemy/scripts/enemy_close.gd" id="1_1gt6t"]
 [ext_resource type="Texture2D" uid="uid://bjsq1ub24gpvw" path="res://assets/enemy/enemy_close.png" id="1_03116"]
 [ext_resource type="Script" path="res://sources/component/spawner_component.gd" id="3_udujr"]
 [ext_resource type="PackedScene" uid="uid://du6ghn18fnsc7" path="res://sources/enemy/enemy_close_explosion.tscn" id="4_x6dqa"]
 [ext_resource type="Script" path="res://sources/component/shake_component.gd" id="5_hcywn"]
+[ext_resource type="Script" path="res://sources/component/hurtbox_component.gd" id="6_w71wg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_808w1"]
 atlas = ExtResource("1_03116")
@@ -90,6 +91,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_klsfd"]
 radius = 4.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wd0xd"]
+radius = 4.0
+
 [node name="EnemyClose" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_1gt6t")
@@ -105,13 +109,24 @@ autoplay = "run"
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_klsfd")
 
-[node name="SpawnerComponent" type="Node2D" parent="."]
-position = Vector2(0, -4)
-script = ExtResource("3_udujr")
-scene = ExtResource("4_x6dqa")
-
 [node name="ShakeComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("5_hcywn")
 actor = NodePath("../AnimatedSprite2D")
 radius = 1.5
 duration = 1.0
+
+[node name="SpawnerComponent" type="Node2D" parent="."]
+position = Vector2(0, -4)
+script = ExtResource("3_udujr")
+scene = ExtResource("4_x6dqa")
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("6_w71wg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_wd0xd")
+debug_color = Color(0.7, 0, 0, 0.42)

@@ -39,7 +39,7 @@ TODO:
 		[X] spawner
 		[X] hitbox
 		[X] hurtbox
-		[ ] stats
+		[ ] health
 		[ ] flash
 		[X] shake
 	[X] callable state machine

@@ -1,0 +1,62 @@
+https://itch.io/jam/jinglegamejam2024
+THEME: EVERYTHING HAS A COST
+- every action has an unintended side effect
+
+
+
+* top-down shooter game
+* you have a certain amount of time to prepare for invasion at night
+
+* player is robot powered by solar cells, so energy is regenerated
+	automatically during the day
+
+* subsystems (access through simple ui):
+	* power:
+		* reroute power to different subsystems
+		* 10 bars of power
+		* more power in subsystem = better
+			* more power in movement subsystem = faster movement
+			* more power in weapon subsystem = faster shoot
+			* more power in synthesizer subsystem = faster production
+	* movement:
+		* consume energy
+	* weapon:
+		* consume ammo
+	* synthesizer:
+		* consume energy
+		* produce consumables:
+			* ammo
+			* parts    (health)
+			* battery  (energy)
+
+
+KNOWN PROBLEM:
+	- tiles are sorted based on their markers position, so the tiles higher are always in front
+	- maybe could work around by using scene/entity as individual tiles instead of using tilemap
+
+TODO:
+	- component:
+		[ ] spawner
+		[ ] hitbox
+		[ ] hurtbox
+		[ ] stats
+		[ ] flash
+		[ ] shake
+	[X] callable state machine
+	[ ] energy
+	[ ] power management system
+	[ ] synthesizer system
+	- enemy
+		[ ] close range (walk into player)
+		[ ] long range  (shoot laser at player)
+	[ ] day/night cycle
+	[ ] game over
+	[ ] main menu
+	[ ] audio
+	[ ] juice
+	[ ] balance + playtest
+
+EXTRA OPTIONAL:
+	[ ] random curse
+		- bullet hell
+		- floor is lava

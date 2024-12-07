@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://djxenlpl2ukw7"]
+
+[ext_resource type="Texture2D" uid="uid://g5l2klcy4wh7" path="res://assets/terrain/tileset.png" id="1_nm7r6"]
+[ext_resource type="Script" path="res://sources/terrain/scripts/tile.gd" id="2_sfav6"]
+
+[node name="Tile" type="Sprite2D"]
+texture = ExtResource("1_nm7r6")
+region_enabled = true
+region_rect = Rect2(8, 8, 8, 8)
+script = ExtResource("2_sfav6")

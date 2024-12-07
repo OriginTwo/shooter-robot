@@ -50,7 +50,6 @@ func _ready() -> void:
 	SignalBus.upgrades_bought.connect(on_upgrades_bought)
 
 	health_component.depleted.connect(get_tree().call_deferred.bind("reload_current_scene"))
-	hurtbox_component.hurt.connect(print.bind("hurt").unbind(1))
 
 	set_deferred("points", 0)
 
@@ -58,7 +57,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot") &&\
 			shoot_cooldown_timer.is_stopped() &&\
 			energy >= SHOOTING_ENERGY_CONSUMPTION:
-		var mouse_pos := get_viewport().get_mouse_position()
+		var mouse_pos := get_global_mouse_position()
 		var laser := laser_spawner.spawn(projectiles_container) as ProjectileComponent
 		laser.direction = laser_spawner.global_position.direction_to(mouse_pos)
 		shoot_cooldown_timer.start()

@@ -29,6 +29,13 @@ const ENERGY_RECHARGE_COOLDOWN_TIME: float = 1.5
 var energy_recharge_cooldown_timer: float
 
 
+signal points_changed(new_amount: int)
+var points: int :
+	set(new_value):
+		points = new_value
+		points_changed.emit(points)
+
+
 func _ready() -> void:
 	add_to_group("player")
 
@@ -38,6 +45,8 @@ func _ready() -> void:
 
 	health_component.depleted.connect(get_tree().call_deferred.bind("reload_current_scene"))
 	hurtbox_component.hurt.connect(print.bind("hurt").unbind(1))
+
+	set_deferred("points", 0)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot") &&\

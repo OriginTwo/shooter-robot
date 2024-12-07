@@ -13,9 +13,11 @@ THEME: EVERYTHING HAS A COST
 * everything costs energy
 	* movement
 	* shooting
-	* crafting
 
-* crafting requires other forms of energy that enemies drop when they die
+* get points after killing enemies, which can be used for:
+	* buy heal
+	* upgrade energy capacity
+	* upgrade energy recharge speed
 
 
 TODO:
@@ -28,7 +30,8 @@ TODO:
 		[X] shake
 	[X] callable state machine
 	[X] energy
-	[ ] crafting system
+	[X] points
+	[ ] upgrade system
 	[X] shoot cooldown
 	- enemy
 		[X] close range (walk into player)

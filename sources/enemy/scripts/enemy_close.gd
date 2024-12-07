@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const POINTS_SCENE := preload("res://sources/enemy/points.tscn")
+
 const MAX_SPEED := 30.0
 
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
@@ -15,8 +17,7 @@ func _ready() -> void:
 	state_machine.add_state("attack", Callable(), Callable(), state_attack_enter)
 	state_machine.set_initial_state("chase")
 
-	#TODO: death effect
-	health_component.depleted.connect(queue_free)
+	health_component.depleted.connect(on_health_depleted)
 
 func _process(delta: float) -> void:
 	state_machine.process(delta)
@@ -29,6 +30,18 @@ func _physics_process(delta: float) -> void:
 	navigation_agent_2d.target_position = player.global_position
 	state_machine.physics_process(delta)
 
+func on_health_depleted() -> void:
+	#TODO: death effect
+	for i in randi_range(1, 3):
+		var points := POINTS_SCENE.instantiate()
+		get_tree().get_first_node_in_group("projectiles").add_child(points)
+		points.global_position = global_position
+		points.velocity = points.SPEED * Vector2(
+			randf_range(-1.0, 1.0),
+			randf_range(-1.0, 1.0)).normalized()
+	queue_free()
+
+
 func state_chase_physics_process(_delta: float) -> void:
 	var target_pos := navigation_agent_2d.get_next_path_position()
 	var target_dir := global_position.direction_to(target_pos)
@@ -38,6 +51,7 @@ func state_chase_physics_process(_delta: float) -> void:
 	if navigation_agent_2d.is_navigation_finished():
 		animated_sprite_2d.play("attack")
 		state_machine.change_state("attack")
+
 
 func state_attack_enter() -> void:
 	await get_tree().create_timer(0.2).timeout

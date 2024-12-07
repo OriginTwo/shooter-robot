@@ -4,10 +4,12 @@ extends CanvasLayer
 
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var energy_bar: ProgressBar = %EnergyBar
+@onready var points_label: Label = %PointsLabel
 
 var player_health: HealthComponent
 
 func _ready() -> void:
+	player.points_changed.connect(on_player_points_changed)
 	player_health = player.get_node("HealthComponent")
 	player_health.changed.connect(on_player_health_changed)
 
@@ -18,6 +20,9 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	energy_bar.value = player.energy
+
+func on_player_points_changed(new_amount: int) -> void:
+	points_label.text = "POINTS: %d" % new_amount
 
 func on_player_health_changed(new_amount: int) -> void:
 	health_bar.value = float(new_amount)

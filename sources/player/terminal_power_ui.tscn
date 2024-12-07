@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://0igdywtrl86w"]
+
+[ext_resource type="Theme" uid="uid://nltfc8w4hrlb" path="res://resources/ui_theme.tres" id="1_afb54"]
+[ext_resource type="PackedScene" uid="uid://bvfmfxmyre4v8" path="res://sources/player/power_display_ui.tscn" id="1_kgqlc"]
+[ext_resource type="Script" path="res://sources/player/scripts/terminal_power_ui.gd" id="2_53gs3"]
+[ext_resource type="PackedScene" uid="uid://dd15pwo242o5m" path="res://sources/player/power_manage_ui.tscn" id="2_em7mp"]
+[ext_resource type="Script" path="res://sources/player/scripts/terminal_ui_redirect_button.gd" id="4_grpy0"]
+
+[node name="TerminalPowerUI" type="VBoxContainer"]
+size_flags_horizontal = 4
+theme = ExtResource("1_afb54")
+alignment = 1
+script = ExtResource("2_53gs3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Available"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AvailablePowerDisplayUI" parent="HBoxContainer" instance=ExtResource("1_kgqlc")]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="PowerManageUI" parent="." instance=ExtResource("2_em7mp")]
+layout_mode = 2
+system_name = "move"
+
+[node name="PowerManageUI2" parent="." instance=ExtResource("2_em7mp")]
+layout_mode = 2
+system_name = "weapon"
+
+[node name="PowerManageUI3" parent="." instance=ExtResource("2_em7mp")]
+layout_mode = 2
+system_name = "craft"
+
+[node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_type_variation = &"TerminalButton"
+text = "Back"
+script = ExtResource("4_grpy0")
+scene_path = "res://sources/player/terminal_menu_ui.tscn"

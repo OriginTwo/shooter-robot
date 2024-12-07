@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdaeqkxl05bmp"]
+[gd_scene load_steps=5 format=3 uid="uid://bdaeqkxl05bmp"]
 
 [ext_resource type="Script" path="res://sources/player/scripts/player_ui.gd" id="1_5hx48"]
 [ext_resource type="Theme" uid="uid://nltfc8w4hrlb" path="res://resources/ui_theme.tres" id="2_qc23t"]
+[ext_resource type="PackedScene" uid="uid://c1oenxa7mnjlo" path="res://sources/player/terminal_menu_ui.tscn" id="3_prewq"]
+[ext_resource type="PackedScene" uid="uid://0igdywtrl86w" path="res://sources/player/terminal_power_ui.tscn" id="4_tonkj"]
 
 [node name="PlayerUI" type="CanvasLayer"]
 script = ExtResource("1_5hx48")
@@ -56,21 +58,9 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+[node name="TerminalMenuUI" parent="CenterContainer/PanelContainer/MarginContainer" instance=ExtResource("3_prewq")]
 layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
 
-[node name="Button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
+[node name="TerminalPowerUI" parent="CenterContainer/PanelContainer/MarginContainer" instance=ExtResource("4_tonkj")]
+visible = false
 layout_mode = 2
-focus_mode = 0
-theme_type_variation = &"TerminalButton"
-text = "POWER"
-
-[node name="Button2" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-focus_mode = 0
-theme_type_variation = &"TerminalButton"
-text = "INVENTORY"

@@ -28,6 +28,34 @@ var energy := MAX_ENERGY :
 const ENERGY_RECHARGE_COOLDOWN_TIME: float = 1.0
 var energy_recharge_cooldown_timer: float
 
+
+signal power_changed
+
+var power: Dictionary = {
+	"_available": 0,
+	"move": 4,
+	"weapon": 3,
+	"craft": 3,
+}
+
+func increment_power(system_name: String) -> void:
+	if power["_available"] > 0:
+		power["_available"] -= 1
+		power[system_name] += 1
+		power_changed.emit()
+		update_system_power(system_name)
+
+func decrement_power(system_name: String) -> void:
+	if power[system_name] > 0:
+		power[system_name] -= 1
+		power["_available"] += 1
+		power_changed.emit()
+		update_system_power(system_name)
+
+func update_system_power(system_name: String) -> void:
+	pass
+
+
 func _ready() -> void:
 	add_to_group("player")
 

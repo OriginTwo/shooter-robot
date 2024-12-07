@@ -11,29 +11,12 @@ THEME: EVERYTHING HAS A COST
 	automatically during the day
 
 * everything costs energy
+	* movement
+	* shooting
+	* crafting
 
-* subsystems (access through simple ui):
-	* power:
-		* reroute power to different subsystems
-		* 10 bars of power
-		* more power in subsystem = better
-			* more power in movement subsystem = faster movement
-			* more power in weapon subsystem = faster shoot
-			* more power in synthesizer subsystem = faster production
-	* movement:
-		* consume energy
-	* weapon:
-		* consume ammo
-	* synthesizer:
-		* consume energy
-		* produce consumables:
-			* parts    (health)
-			* battery  (energy)
+* crafting requires other forms of energy that enemies drop when they die
 
-
-KNOWN PROBLEM:
-	- tiles are sorted based on their markers position, so the tiles higher are always in front
-	- maybe could work around by using scene/entity as individual tiles instead of using tilemap
 
 TODO:
 	- component:
@@ -45,8 +28,7 @@ TODO:
 		[X] shake
 	[X] callable state machine
 	[X] energy
-	[ ] power management system
-	[ ] synthesizer system
+	[ ] crafting system
 	[X] shoot cooldown
 	- enemy
 		[X] close range (walk into player)
@@ -59,6 +41,6 @@ TODO:
 	[ ] balance + playtest
 
 EXTRA OPTIONAL:
-	[ ] random curse
+	[ ] random event
 		- bullet hell
 		- floor is lava

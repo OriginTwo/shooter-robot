@@ -45,7 +45,7 @@ TODO:
 		[ ] flash
 		[X] shake
 	[X] callable state machine
-	[ ] energy
+	[X] energy
 	[ ] power management system
 	[ ] synthesizer system
 	[X] shoot cooldown

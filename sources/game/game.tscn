@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2v5rwbvgpdx0"]
+[gd_scene load_steps=5 format=3 uid="uid://d2v5rwbvgpdx0"]
 
+[ext_resource type="PackedScene" uid="uid://bdaeqkxl05bmp" path="res://sources/player/player_ui.tscn" id="3_6fsbk"]
 [ext_resource type="PackedScene" uid="uid://cm5wx8q6yihns" path="res://sources/player/player.tscn" id="7_dx8t4"]
 [ext_resource type="PackedScene" uid="uid://7wy4rpgf0k20" path="res://sources/enemy/enemy_close.tscn" id="10_hwl8f"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_m04fi"]
-vertices = PackedVector2Array(242.938, 167.039, 20.9375, 167.953, 20.0469, 19.9531, 242.047, 19.0391)
+vertices = PackedVector2Array(260, 170, 10, 170, 10, 10, 260, 10)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(10, 10, 11, 178, 253, 177, 252, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 0, 180, 270, 180, 270, 0)])
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -35,3 +36,6 @@ position = Vector2(72, 47)
 [node name="Projectiles" type="CanvasLayer" parent="." groups=["projectiles"]]
 
 [node name="Particles" type="CanvasLayer" parent="." groups=["particles"]]
+
+[node name="PlayerUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_6fsbk")]
+player = NodePath("../Player")

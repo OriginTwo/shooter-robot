@@ -18,6 +18,7 @@ func _ready() -> void:
 	state_machine.set_initial_state("chase")
 
 	health_component.depleted.connect(on_health_depleted)
+	health_component.changed.connect(on_health_changed)
 
 func _process(delta: float) -> void:
 	state_machine.process(delta)
@@ -41,6 +42,10 @@ func on_health_depleted() -> void:
 			randf_range(-1.0, 1.0)).normalized()
 	queue_free()
 
+func on_health_changed(_new_amount: int) -> void:
+	$HurtShakeComponent.shake()
+	$FlashComponent.flash()
+
 
 func state_chase_physics_process(_delta: float) -> void:
 	var target_pos := navigation_agent_2d.get_next_path_position()
@@ -55,7 +60,7 @@ func state_chase_physics_process(_delta: float) -> void:
 
 func state_attack_enter() -> void:
 	await get_tree().create_timer(0.2).timeout
-	$ShakeComponent.shake()
+	$AttackShakeComponent.shake()
 	await get_tree().create_timer(0.2).timeout
 	$SpawnerComponent.spawn(get_tree().get_first_node_in_group("particles"))
 	queue_free()

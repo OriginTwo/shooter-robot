@@ -28,4 +28,5 @@ func _physics_process(delta: float) -> void:
 
 	if global_position.distance_squared_to(player_pos) <= COLLECTION_RADIUS * COLLECTION_RADIUS:
 		player.points += 1
+		$SpawnerComponent.spawn(get_tree().get_first_node_in_group("particles"))
 		queue_free()

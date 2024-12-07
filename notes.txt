@@ -26,7 +26,7 @@ TODO:
 		[X] hitbox
 		[X] hurtbox
 		[X] health
-		[ ] flash
+		[X] flash
 		[X] shake
 	[X] callable state machine
 	[X] energy

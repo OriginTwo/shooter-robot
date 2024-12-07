@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dk5raip8rkb42"]
+[gd_scene load_steps=5 format=3 uid="uid://dk5raip8rkb42"]
 
 [ext_resource type="Script" path="res://sources/enemy/scripts/points.gd" id="1_e6ia1"]
+[ext_resource type="Script" path="res://sources/component/spawner_component.gd" id="2_f6xnv"]
+[ext_resource type="PackedScene" uid="uid://cj27uvrygq68s" path="res://sources/enemy/points_collected.tscn" id="3_i6vnt"]
 
 [sub_resource type="Curve" id="Curve_bdsnl"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.789474, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -13,3 +15,7 @@ script = ExtResource("1_e6ia1")
 width = 4.0
 width_curve = SubResource("Curve_bdsnl")
 default_color = Color(0.686275, 0.74902, 0.823529, 1)
+
+[node name="SpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("2_f6xnv")
+scene = ExtResource("3_i6vnt")

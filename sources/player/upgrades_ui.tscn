@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://hwbnth84dl8e"]
+
+[ext_resource type="Theme" uid="uid://nltfc8w4hrlb" path="res://resources/ui_theme.tres" id="1_xmvxf"]
+[ext_resource type="Script" path="res://sources/player/scripts/upgrades_ui.gd" id="2_36axq"]
+[ext_resource type="Script" path="res://resources/scripts/upgrades_desc.gd" id="3_i6acr"]
+[ext_resource type="Resource" uid="uid://ddxko27vejnbw" path="res://resources/upgrades/heal.tres" id="4_1wik6"]
+[ext_resource type="Resource" uid="uid://b1jnqmgkcidj8" path="res://resources/upgrades/energy_capacity.tres" id="5_gv1f0"]
+[ext_resource type="Resource" uid="uid://c3uaquyrapwtq" path="res://resources/upgrades/energy_recharge.tres" id="6_8hv2l"]
+
+[node name="UpgradesUI" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xmvxf")
+theme_type_variation = &"UpgradesPanel"
+script = ExtResource("2_36axq")
+upgrades_descs = Array[ExtResource("3_i6acr")]([ExtResource("4_1wik6"), ExtResource("5_gv1f0"), ExtResource("6_8hv2l")])
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "UPGRADE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradesButtonContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BaseUpgradesButton" type="Button" parent="MarginContainer/VBoxContainer/UpgradesButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"UpgradesButton"
+icon_alignment = 1
+
+[node name="PointsLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "9999999999 POINTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeDescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(104, 24)
+layout_mode = 2
+text = "UPGRADE DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

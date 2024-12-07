@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://nltfc8w4hrlb"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://nltfc8w4hrlb"]
 
 [ext_resource type="FontFile" uid="uid://uttp4ufevk4g" path="res://assets/font/kenney_mini_square_mono.ttf" id="1_t4rv0"]
 
@@ -70,6 +70,59 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klpk6"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 0, 0.12549)
+border_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gj2j"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(1, 1, 1, 0.12549)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76ynb"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 0, 0.12549)
+border_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pr444"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 0, 0.12549)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mogp8"]
+bg_color = Color(0.247059, 0.156863, 0.196078, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
 [resource]
 default_font = ExtResource("1_t4rv0")
 default_font_size = 8
@@ -90,3 +143,10 @@ TerminalButton/styles/normal = SubResource("StyleBoxFlat_3esrg")
 TerminalButton/styles/pressed = SubResource("StyleBoxFlat_ukqm7")
 TerminalPanel/base_type = &"PanelContainer"
 TerminalPanel/styles/panel = SubResource("StyleBoxFlat_v2i4b")
+UpgradesButton/base_type = &"Button"
+UpgradesButton/styles/disabled = SubResource("StyleBoxFlat_klpk6")
+UpgradesButton/styles/hover = SubResource("StyleBoxFlat_3gj2j")
+UpgradesButton/styles/normal = SubResource("StyleBoxFlat_76ynb")
+UpgradesButton/styles/pressed = SubResource("StyleBoxFlat_pr444")
+UpgradesPanel/base_type = &"PanelContainer"
+UpgradesPanel/styles/panel = SubResource("StyleBoxFlat_mogp8")

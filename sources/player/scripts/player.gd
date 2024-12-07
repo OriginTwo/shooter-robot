@@ -13,19 +13,23 @@ const MAX_SPEED := 40.0
 
 var state_machine := CallableStateMachine.new()
 
-const MAX_ENERGY: float = 500.0
-const ENERGY_RECHARGE_RATE: float = 50.0        # per second
+signal max_energy_changed(new_amount: float)
 const RUNNING_ENERGY_CONSUMPTION: float = 10.0  # per second
 const SHOOTING_ENERGY_CONSUMPTION: float = 20.0 # per shot
-var energy := MAX_ENERGY :
+var energy_recharge_rate: float = 50.0          # per second
+var max_energy: float = 500.0 :
+	set(new_value):
+		max_energy = new_value
+		max_energy_changed.emit(max_energy)
+var energy := max_energy :
 	set(new_value):
 		var old_value := energy
-		energy = clamp(new_value, 0.0, MAX_ENERGY)
+		energy = clamp(new_value, 0.0, max_energy)
 		if energy < old_value:
 			energy_recharge_cooldown_timer = ENERGY_RECHARGE_COOLDOWN_TIME
 
 # time to wait after energy usage to begin recharge
-const ENERGY_RECHARGE_COOLDOWN_TIME: float = 1.5
+const ENERGY_RECHARGE_COOLDOWN_TIME: float = 1.0
 var energy_recharge_cooldown_timer: float
 
 
@@ -42,6 +46,8 @@ func _ready() -> void:
 	state_machine.add_state("idle", state_idle_process, Callable(), state_idle_enter)
 	state_machine.add_state("run", Callable(), state_run_physics_process, state_run_enter)
 	state_machine.set_initial_state("idle")
+
+	SignalBus.upgrades_bought.connect(on_upgrades_bought)
 
 	health_component.depleted.connect(get_tree().call_deferred.bind("reload_current_scene"))
 	hurtbox_component.hurt.connect(print.bind("hurt").unbind(1))
@@ -61,8 +67,17 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func recharge_energy(delta: float) -> void:
 	energy_recharge_cooldown_timer = max(0.0, energy_recharge_cooldown_timer - delta)
-	if energy_recharge_cooldown_timer == 0.0 && energy < MAX_ENERGY:
-		energy += ENERGY_RECHARGE_RATE * delta
+	if energy_recharge_cooldown_timer == 0.0 && energy < max_energy:
+		energy += energy_recharge_rate * delta
+
+func on_upgrades_bought(desc: UpgradesDesc) -> void:
+	match desc.kind:
+		UpgradesDesc.Kind.HEAL:
+			health_component.health += 1
+		UpgradesDesc.Kind.ENERGY_CAPACITY:
+			max_energy += 50.0
+		UpgradesDesc.Kind.ENERGY_RECHARGE:
+			energy_recharge_rate += 10.0
 
 
 func state_idle_enter() -> void:

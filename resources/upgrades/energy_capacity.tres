@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradesDesc" load_steps=4 format=3 uid="uid://b1jnqmgkcidj8"]
+
+[ext_resource type="Texture2D" uid="uid://duc2noeokf67p" path="res://assets/player/upgrades.png" id="1_4newn"]
+[ext_resource type="Script" path="res://resources/scripts/upgrades_desc.gd" id="1_yc4dx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq0nu"]
+atlas = ExtResource("1_4newn")
+region = Rect2(32, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_yc4dx")
+kind = 1
+description = "increase energy capacity"
+icon = SubResource("AtlasTexture_cq0nu")
+points = 80
+points_increase = 20

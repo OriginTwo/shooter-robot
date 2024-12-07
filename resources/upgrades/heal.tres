@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradesDesc" load_steps=3 format=3 uid="uid://ddxko27vejnbw"]
+
+[ext_resource type="Texture2D" uid="uid://clfshijpwl2ui" path="res://resources/upgrades/upgrades_atlas.tres" id="1_jrrbb"]
+[ext_resource type="Script" path="res://resources/scripts/upgrades_desc.gd" id="1_sgdw1"]
+
+[resource]
+script = ExtResource("1_sgdw1")
+kind = 0
+description = "Heal"
+icon = ExtResource("1_jrrbb")
+points = 15
+points_increase = 5

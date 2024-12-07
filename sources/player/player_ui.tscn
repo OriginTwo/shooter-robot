@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdaeqkxl05bmp"]
+[gd_scene load_steps=4 format=3 uid="uid://bdaeqkxl05bmp"]
 
 [ext_resource type="Script" path="res://sources/player/scripts/player_ui.gd" id="1_5hx48"]
 [ext_resource type="Theme" uid="uid://nltfc8w4hrlb" path="res://resources/ui_theme.tres" id="2_qc23t"]
+[ext_resource type="PackedScene" uid="uid://hwbnth84dl8e" path="res://sources/player/upgrades_ui.tscn" id="3_7nqcd"]
 
 [node name="PlayerUI" type="CanvasLayer"]
 script = ExtResource("1_5hx48")
@@ -39,3 +40,6 @@ show_percentage = false
 unique_name_in_owner = true
 layout_mode = 2
 text = "points: 999999999"
+
+[node name="UpgradesUI" parent="." instance=ExtResource("3_7nqcd")]
+visible = false

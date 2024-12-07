@@ -31,7 +31,7 @@ TODO:
 	[X] callable state machine
 	[X] energy
 	[X] points
-	[ ] upgrade system
+	[X] upgrade system
 	[X] shoot cooldown
 	- enemy
 		[X] close range (walk into player)

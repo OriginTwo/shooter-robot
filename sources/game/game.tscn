@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=4 uid="uid://d2v5rwbvgpdx0"]
+[gd_scene load_steps=11 format=4 uid="uid://d2v5rwbvgpdx0"]
 
 [ext_resource type="Texture2D" uid="uid://g5l2klcy4wh7" path="res://assets/terrain/tileset.png" id="1_0g64o"]
 [ext_resource type="PackedScene" uid="uid://bdaeqkxl05bmp" path="res://sources/player/player_ui.tscn" id="3_6fsbk"]
+[ext_resource type="PackedScene" uid="uid://b50cwccqbq5g3" path="res://sources/enemy/enemy_range.tscn" id="4_otg3m"]
 [ext_resource type="PackedScene" uid="uid://cm5wx8q6yihns" path="res://sources/player/player.tscn" id="7_dx8t4"]
 [ext_resource type="PackedScene" uid="uid://7wy4rpgf0k20" path="res://sources/enemy/enemy_close.tscn" id="10_hwl8f"]
 
@@ -210,17 +211,17 @@ position = Vector2(235, 157)
 [node name="Enemy4" parent="Enemies" instance=ExtResource("10_hwl8f")]
 position = Vector2(235, 31)
 
-[node name="Enemy5" parent="Enemies" instance=ExtResource("10_hwl8f")]
-position = Vector2(72, 47)
+[node name="EnemyRange" parent="Enemies" instance=ExtResource("4_otg3m")]
+position = Vector2(99, 227)
 
-[node name="Enemy6" parent="Enemies" instance=ExtResource("10_hwl8f")]
-position = Vector2(357, -79)
+[node name="EnemyRange2" parent="Enemies" instance=ExtResource("4_otg3m")]
+position = Vector2(-14, 191)
 
-[node name="Enemy7" parent="Enemies" instance=ExtResource("10_hwl8f")]
-position = Vector2(284, 74)
+[node name="EnemyRange3" parent="Enemies" instance=ExtResource("4_otg3m")]
+position = Vector2(277, -130)
 
-[node name="Enemy8" parent="Enemies" instance=ExtResource("10_hwl8f")]
-position = Vector2(247, -48)
+[node name="EnemyRange4" parent="Enemies" instance=ExtResource("4_otg3m")]
+position = Vector2(106, -37)
 
 [node name="Projectiles" type="Node2D" parent="." groups=["projectiles"]]
 z_index = 5

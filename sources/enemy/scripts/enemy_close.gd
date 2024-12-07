@@ -32,7 +32,6 @@ func _physics_process(delta: float) -> void:
 	state_machine.physics_process(delta)
 
 func on_health_depleted() -> void:
-	#TODO: death effect
 	for i in randi_range(1, 3):
 		var points := POINTS_SCENE.instantiate()
 		get_tree().get_first_node_in_group("projectiles").add_child(points)
@@ -40,6 +39,7 @@ func on_health_depleted() -> void:
 		points.velocity = points.SPEED * Vector2(
 			randf_range(-1.0, 1.0),
 			randf_range(-1.0, 1.0)).normalized()
+	$DeadParticleSpawnerComponent.spawn(get_tree().get_first_node_in_group("particles"))
 	queue_free()
 
 func on_health_changed(_new_amount: int) -> void:
@@ -62,5 +62,5 @@ func state_attack_enter() -> void:
 	await get_tree().create_timer(0.2).timeout
 	$AttackShakeComponent.shake()
 	await get_tree().create_timer(0.2).timeout
-	$SpawnerComponent.spawn(get_tree().get_first_node_in_group("particles"))
+	$ExplosionSpawnerComponent.spawn(get_tree().get_first_node_in_group("particles"))
 	queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cm5wx8q6yihns"]
+[gd_scene load_steps=22 format=3 uid="uid://cm5wx8q6yihns"]
 
 [ext_resource type="Script" path="res://sources/player/scripts/player.gd" id="1_igoof"]
 [ext_resource type="Texture2D" uid="uid://b43fmtupuh2rv" path="res://assets/player/player.png" id="1_j3g8f"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://sources/component/hurtbox_component.gd" id="3_yf4sa"]
 [ext_resource type="Script" path="res://sources/component/spawner_component.gd" id="4_cp4yt"]
 [ext_resource type="PackedScene" uid="uid://c821weiyjnml8" path="res://sources/player/laser.tscn" id="5_bsaob"]
+[ext_resource type="Script" path="res://sources/component/shake_component.gd" id="7_m6aws"]
+[ext_resource type="Script" path="res://sources/component/flash_component.gd" id="8_xgmko"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hsrfo"]
 atlas = ExtResource("1_j3g8f")
@@ -130,7 +132,16 @@ position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_dto8k")
 debug_color = Color(0.7, 0, 0, 0.42)
 
-[node name="LaserSpawner" type="Node2D" parent="."]
+[node name="LaserSpawnerComponent" type="Node2D" parent="."]
 position = Vector2(0, -5)
 script = ExtResource("4_cp4yt")
 scene = ExtResource("5_bsaob")
+
+[node name="ShakeComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("7_m6aws")
+actor = NodePath("../AnimatedSprite2D")
+
+[node name="FlashComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("8_xgmko")
+actor = NodePath("../AnimatedSprite2D")
+duration = 0.4

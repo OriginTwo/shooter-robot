@@ -35,7 +35,7 @@ TODO:
 	[X] shoot cooldown
 	- enemy
 		[X] close range (walk into player)
-		[ ] long range  (shoot laser at player)
+		[X] long range  (shoot laser at player)
 	[ ] day/night cycle
 	[ ] game over
 	[ ] main menu

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://sources/component/projectile_component.gd" id="1_cbctl"]
 [ext_resource type="Texture2D" uid="uid://d1tk0hpo7oyuy" path="res://assets/player/laser.png" id="1_ch85y"]
 [ext_resource type="Script" path="res://sources/component/spawner_component.gd" id="3_rpb8v"]
-[ext_resource type="PackedScene" uid="uid://dk05jyojgtw1y" path="res://sources/player/laser_hit_particle.tscn" id="4_o7hmv"]
+[ext_resource type="PackedScene" uid="uid://dk05jyojgtw1y" path="res://sources/effect/laser_hit_particle.tscn" id="4_o7hmv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_stf1g"]
 radius = 3.0

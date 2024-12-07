@@ -9,7 +9,7 @@ const MAX_SPEED := 40.0
 @onready var shoot_cooldown_timer: Timer = $ShootCooldownTimer
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
-@onready var laser_spawner: SpawnerComponent = $LaserSpawner
+@onready var laser_spawner_component: SpawnerComponent = $LaserSpawnerComponent
 
 var state_machine := CallableStateMachine.new()
 
@@ -17,7 +17,7 @@ signal max_energy_changed(new_amount: float)
 const RUNNING_ENERGY_CONSUMPTION: float = 10.0  # per second
 const SHOOTING_ENERGY_CONSUMPTION: float = 20.0 # per shot
 var energy_recharge_rate: float = 50.0          # per second
-var max_energy: float = 500.0 :
+var max_energy: float = 1000.0 :
 	set(new_value):
 		max_energy = new_value
 		max_energy_changed.emit(max_energy)
@@ -50,6 +50,7 @@ func _ready() -> void:
 	SignalBus.upgrades_bought.connect(on_upgrades_bought)
 
 	health_component.depleted.connect(get_tree().call_deferred.bind("reload_current_scene"))
+	health_component.changed.connect(on_health_changed)
 
 	set_deferred("points", 0)
 
@@ -58,8 +59,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			shoot_cooldown_timer.is_stopped() &&\
 			energy >= SHOOTING_ENERGY_CONSUMPTION:
 		var mouse_pos := get_global_mouse_position()
-		var laser := laser_spawner.spawn(projectiles_container) as ProjectileComponent
-		laser.direction = laser_spawner.global_position.direction_to(mouse_pos)
+		var laser := laser_spawner_component.spawn(projectiles_container) as ProjectileComponent
+		laser.direction = laser_spawner_component.global_position.direction_to(mouse_pos)
 		shoot_cooldown_timer.start()
 		energy -= SHOOTING_ENERGY_CONSUMPTION
 
@@ -77,6 +78,10 @@ func on_upgrades_bought(desc: UpgradesDesc) -> void:
 			max_energy += 50.0
 		UpgradesDesc.Kind.ENERGY_RECHARGE:
 			energy_recharge_rate += 10.0
+
+func on_health_changed(_new_amount: int) -> void:
+	$ShakeComponent.shake()
+	$FlashComponent.flash()
 
 
 func state_idle_enter() -> void:

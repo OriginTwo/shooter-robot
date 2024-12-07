@@ -110,6 +110,10 @@ autoplay = "idle"
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_jexeu")
 
+[node name="ShootCooldownTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hurtbox")]
 script = ExtResource("3_eo0ex")
 max_health = 5

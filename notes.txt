@@ -48,7 +48,7 @@ TODO:
 	[ ] energy
 	[ ] power management system
 	[ ] synthesizer system
-	[ ] shoot cooldown
+	[X] shoot cooldown
 	- enemy
 		[X] close range (walk into player)
 		[ ] long range  (shoot laser at player)

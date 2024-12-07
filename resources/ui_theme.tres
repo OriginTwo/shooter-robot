@@ -1,0 +1,86 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://nltfc8w4hrlb"]
+
+[ext_resource type="FontFile" uid="uid://uttp4ufevk4g" path="res://assets/font/kenney_mini_square_mono.ttf" id="1_t4rv0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sewu0"]
+bg_color = Color(0.247059, 0.156863, 0.196078, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nq2m6"]
+bg_color = Color(0.984314, 0.572549, 0.168627, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4g45x"]
+bg_color = Color(0.247059, 0.156863, 0.196078, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0suw"]
+bg_color = Color(0.388235, 0.776471, 0.301961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odxy2"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 0.905882, 0.384314, 0.196078)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.905882, 0.384314, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3esrg"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 0, 0.188235)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.905882, 0.384314, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ukqm7"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 0, 0.188235)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.905882, 0.384314, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2i4b"]
+bg_color = Color(0.0980392, 0.239216, 0.247059, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+anti_aliasing = false
+
+[resource]
+default_font = ExtResource("1_t4rv0")
+default_font_size = 8
+EnergyProgressBar/base_type = &"ProgressBar"
+EnergyProgressBar/styles/background = SubResource("StyleBoxFlat_sewu0")
+EnergyProgressBar/styles/fill = SubResource("StyleBoxFlat_nq2m6")
+HealthProgressBar/base_type = &"ProgressBar"
+HealthProgressBar/styles/background = SubResource("StyleBoxFlat_4g45x")
+HealthProgressBar/styles/fill = SubResource("StyleBoxFlat_l0suw")
+Label/fonts/font = ExtResource("1_t4rv0")
+TerminalButton/base_type = &"Button"
+TerminalButton/colors/font_color = Color(1, 0.905882, 0.384314, 1)
+TerminalButton/colors/font_hover_color = Color(1, 0.905882, 0.384314, 1)
+TerminalButton/colors/font_pressed_color = Color(1, 0.905882, 0.384314, 1)
+TerminalButton/styles/hover = SubResource("StyleBoxFlat_odxy2")
+TerminalButton/styles/normal = SubResource("StyleBoxFlat_3esrg")
+TerminalButton/styles/pressed = SubResource("StyleBoxFlat_ukqm7")
+TerminalPanel/base_type = &"PanelContainer"
+TerminalPanel/styles/panel = SubResource("StyleBoxFlat_v2i4b")

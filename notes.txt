@@ -27,7 +27,6 @@ THEME: EVERYTHING HAS A COST
 	* synthesizer:
 		* consume energy
 		* produce consumables:
-			* ammo
 			* parts    (health)
 			* battery  (energy)
 

@@ -49,7 +49,8 @@ func _ready() -> void:
 
 	SignalBus.upgrades_bought.connect(on_upgrades_bought)
 
-	health_component.depleted.connect(get_tree().call_deferred.bind("reload_current_scene"))
+	#health_component.depleted.connect(get_tree().call_deferred.bind("reload_current_scene"))
+	health_component.depleted.connect(on_health_depleted)
 	health_component.changed.connect(on_health_changed)
 
 	set_deferred("points", 0)
@@ -79,9 +80,14 @@ func on_upgrades_bought(desc: UpgradesDesc) -> void:
 		UpgradesDesc.Kind.ENERGY_RECHARGE:
 			energy_recharge_rate += 10.0
 
+func on_health_depleted() -> void:
+	SignalBus.game_over.emit()
+	queue_free()
+
 func on_health_changed(_new_amount: int) -> void:
 	$ShakeComponent.shake()
 	$FlashComponent.flash()
+	VfxUtil.shake_camera()
 
 
 func state_idle_enter() -> void:

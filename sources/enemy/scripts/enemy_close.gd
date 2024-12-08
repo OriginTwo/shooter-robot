@@ -15,7 +15,10 @@ var state_machine := CallableStateMachine.new()
 func _ready() -> void:
 	state_machine.add_state("chase", Callable(), state_chase_physics_process)
 	state_machine.add_state("attack", Callable(), Callable(), state_attack_enter)
+	state_machine.add_state("game_over", Callable(), Callable(), state_game_over_enter)
 	state_machine.set_initial_state("chase")
+
+	SignalBus.game_over.connect(state_machine.change_state.bind("game_over", true))
 
 	health_component.depleted.connect(on_health_depleted)
 	health_component.changed.connect(on_health_changed)
@@ -28,7 +31,6 @@ func _physics_process(delta: float) -> void:
 	if first_physics_frame:
 		first_physics_frame = false
 		return
-	navigation_agent_2d.target_position = player.global_position
 	state_machine.physics_process(delta)
 
 func on_health_depleted() -> void:
@@ -48,6 +50,8 @@ func on_health_changed(_new_amount: int) -> void:
 
 
 func state_chase_physics_process(_delta: float) -> void:
+	navigation_agent_2d.target_position = player.global_position
+
 	var target_pos := navigation_agent_2d.get_next_path_position()
 	var target_dir := global_position.direction_to(target_pos)
 	velocity = target_dir * MAX_SPEED
@@ -64,3 +68,7 @@ func state_attack_enter() -> void:
 	await get_tree().create_timer(0.2).timeout
 	$ExplosionSpawnerComponent.spawn(get_tree().get_first_node_in_group("particles"))
 	queue_free()
+
+
+func state_game_over_enter() -> void:
+	animated_sprite_2d.play("idle")

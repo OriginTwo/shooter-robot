@@ -17,6 +17,8 @@ func _ready() -> void:
 	energy_bar.max_value = player.max_energy
 	energy_bar.value = player.energy
 
+	SignalBus.game_over.connect(set_process.bind(false))
+
 	player.max_energy_changed.connect(on_player_max_energy_changed)
 	player.points_changed.connect(on_player_points_changed)
 	player_health.changed.connect(on_player_health_changed)

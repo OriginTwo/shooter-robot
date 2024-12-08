@@ -37,9 +37,7 @@ TODO:
 		[X] close range (walk into player)
 		[X] long range  (shoot laser at player)
 		[X] spawning
-	[ ] day/night cycle
 	[ ] game over
-	[ ] main menu
 	[ ] audio
 	[ ] juice
 	[ ] balance + playtest
@@ -48,3 +46,4 @@ EXTRA OPTIONAL:
 	[ ] random event
 		- bullet hell
 		- floor is lava
+	[ ] main menu

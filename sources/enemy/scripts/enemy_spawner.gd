@@ -13,6 +13,8 @@ const SPAWN_DISTANCE_FROM_PLAYER: float = 80.0
 var spawn_time: float = 4.0
 
 func _ready() -> void:
+	SignalBus.game_over.connect(timer.stop)
+
 	timer.timeout.connect(on_spawn)
 	timer.start(spawn_time)
 

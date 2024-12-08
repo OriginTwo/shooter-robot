@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://d2v5rwbvgpdx0"]
+[gd_scene load_steps=13 format=4 uid="uid://d2v5rwbvgpdx0"]
 
 [ext_resource type="Texture2D" uid="uid://g5l2klcy4wh7" path="res://assets/terrain/tileset.png" id="1_0g64o"]
 [ext_resource type="Script" path="res://sources/game/scripts/game.gd" id="1_gr32f"]
 [ext_resource type="PackedScene" uid="uid://bdaeqkxl05bmp" path="res://sources/player/player_ui.tscn" id="3_6fsbk"]
+[ext_resource type="PackedScene" uid="uid://cwh7hfoussrje" path="res://sources/player/input_guide.tscn" id="4_yw8ne"]
 [ext_resource type="PackedScene" uid="uid://b58jjeh5w0b3n" path="res://sources/enemy/enemy_spawner.tscn" id="5_olu8f"]
 [ext_resource type="PackedScene" uid="uid://cm5wx8q6yihns" path="res://sources/player/player.tscn" id="7_dx8t4"]
 
@@ -213,6 +214,9 @@ position = Vector2(69, 90)
 [node name="Camera2D" type="Camera2D" parent="Player" groups=["game_camera"]]
 position = Vector2(0, -4)
 position_smoothing_speed = 2.0
+
+[node name="InputGuide" parent="Player" instance=ExtResource("4_yw8ne")]
+position = Vector2(0, -14)
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("tile_map_layer") instance=ExtResource("5_olu8f")]
 tile_map_layer = NodePath("../TileMapLayer")

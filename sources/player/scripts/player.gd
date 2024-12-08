@@ -49,7 +49,6 @@ func _ready() -> void:
 
 	SignalBus.upgrades_bought.connect(on_upgrades_bought)
 
-	#health_component.depleted.connect(get_tree().call_deferred.bind("reload_current_scene"))
 	health_component.depleted.connect(on_health_depleted)
 	health_component.changed.connect(on_health_changed)
 

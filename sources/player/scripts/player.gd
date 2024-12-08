@@ -14,10 +14,10 @@ const MAX_SPEED := 40.0
 var state_machine := CallableStateMachine.new()
 
 signal max_energy_changed(new_amount: float)
-const RUNNING_ENERGY_CONSUMPTION: float = 10.0  # per second
 const SHOOTING_ENERGY_CONSUMPTION: float = 20.0 # per shot
+const RUNNING_ENERGY_CONSUMPTION: float = 0.3   # percent of recharge rate
 var energy_recharge_rate: float = 50.0          # per second
-var max_energy: float = 1000.0 :
+var max_energy: float = 500.0 :
 	set(new_value):
 		max_energy = new_value
 		max_energy_changed.emit(max_energy)
@@ -66,19 +66,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		energy -= SHOOTING_ENERGY_CONSUMPTION
 
 
-func recharge_energy(delta: float) -> void:
-	energy_recharge_cooldown_timer = max(0.0, energy_recharge_cooldown_timer - delta)
-	if energy_recharge_cooldown_timer == 0.0 && energy < max_energy:
-		energy += energy_recharge_rate * delta
-
 func on_upgrades_bought(desc: UpgradesDesc) -> void:
 	match desc.kind:
 		UpgradesDesc.Kind.HEAL:
 			health_component.health += 1
 		UpgradesDesc.Kind.ENERGY_CAPACITY:
-			max_energy += 50.0
+			max_energy += 100.0
 		UpgradesDesc.Kind.ENERGY_RECHARGE:
-			energy_recharge_rate += 10.0
+			energy_recharge_rate += 20.0
 
 func on_health_depleted() -> void:
 	AudioManager.play_sound("player_die")
@@ -97,13 +92,15 @@ func on_health_reduced() -> void:
 func state_idle_enter() -> void:
 	sprite.play("idle")
 
-func state_idle_process(_delta: float) -> void:
+func state_idle_process(delta: float) -> void:
 	if (Input.is_action_just_pressed("move_w") ||
 			Input.is_action_just_pressed("move_e") ||
 			Input.is_action_just_pressed("move_n") ||
 			Input.is_action_just_pressed("move_s")) &&\
 			energy > 0.0:
 		state_machine.change_state("run")
+
+	energy += energy_recharge_rate * delta
 
 
 func state_run_enter() -> void:
@@ -115,7 +112,7 @@ func state_run_physics_process(delta: float) -> void:
 		input_vector.x = Input.get_axis("move_w", "move_e")
 		input_vector.y = Input.get_axis("move_n", "move_s")
 	velocity = input_vector.normalized() * MAX_SPEED
-	energy -= RUNNING_ENERGY_CONSUMPTION * delta
+	energy += energy_recharge_rate * RUNNING_ENERGY_CONSUMPTION * delta
 
 	move_and_slide()
 
@@ -125,7 +122,6 @@ func state_run_physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	state_machine.process(delta)
-	recharge_energy(delta)
 
 func _physics_process(delta: float) -> void:
 	state_machine.physics_process(delta)

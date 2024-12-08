@@ -12,5 +12,5 @@ script = ExtResource("1_mabvt")
 kind = 2
 description = "increase energy recharge speed"
 icon = SubResource("AtlasTexture_ayyqd")
-points = 50
-points_increase = 15
+points = 25
+points_increase = 5

@@ -12,5 +12,5 @@ script = ExtResource("1_yc4dx")
 kind = 1
 description = "increase energy capacity"
 icon = SubResource("AtlasTexture_cq0nu")
-points = 80
-points_increase = 20
+points = 20
+points_increase = 5

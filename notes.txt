@@ -41,8 +41,8 @@ TODO:
 	[X] sound
 	[X] music
 	[X] juice
-	[ ] difficulty curve
-	[ ] balance + playtest
+	[X] difficulty curve
+	[X] balance + playtest
 
 EXTRA OPTIONAL:
 	[ ] random event

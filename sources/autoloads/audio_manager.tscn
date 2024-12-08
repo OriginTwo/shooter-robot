@@ -20,5 +20,6 @@ sounds = Array[ExtResource("2_0s3pi")]([ExtResource("3_4f27t"), ExtResource("4_x
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_g0034")
-volume_db = -17.0
+volume_db = -19.0
 playback_type = 1
+parameters/looping = true

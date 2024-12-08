@@ -11,6 +11,9 @@ const COLLECTION_RADIUS: float = 4.0
 
 var velocity: Vector2
 
+func _ready() -> void:
+	SignalBus.game_over.connect(queue_free)
+
 func _physics_process(delta: float) -> void:
 	var player_pos := player.global_position
 	player_pos.y -= 5.0

@@ -16,7 +16,6 @@ func play_music() -> void:
 
 func tween_music_pitch(pitch: float, duration: float) -> void:
 	create_tween().tween_property(music_player, "pitch_scale", pitch, duration)
-	#music_player.pitch_scale = pitch
 
 func play_sound(sound_name: StringName) -> void:
 	if !sound_dict.has(sound_name):

@@ -18,6 +18,15 @@ func _ready() -> void:
 	timer.timeout.connect(on_spawn)
 	timer.start(spawn_time)
 
+	var tween := create_tween()
+	tween.tween_property(self, "spawn_time", 3.0, 60.0)
+	tween.tween_property(self, "spawn_time", 2.0, 90.0)
+	tween.tween_property(self, "spawn_time", 1.5, 45.0)
+	tween.tween_interval(60.0)
+	tween.tween_property(self, "spawn_time", 1.0, 45.0)
+	tween.tween_property(self, "spawn_time", 0.75, 150.0)
+	tween.tween_property(self, "spawn_time", 0.5, 150.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+
 func on_spawn() -> void:
 	var enemy: Node2D = enemy_scenes.pick_random().instantiate()
 	add_child(enemy)

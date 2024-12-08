@@ -8,5 +8,5 @@ script = ExtResource("1_sgdw1")
 kind = 0
 description = "Heal"
 icon = ExtResource("1_jrrbb")
-points = 15
+points = 5
 points_increase = 5

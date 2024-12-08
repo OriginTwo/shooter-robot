@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://d2v5rwbvgpdx0"]
+[gd_scene load_steps=19 format=4 uid="uid://d2v5rwbvgpdx0"]
 
 [ext_resource type="Texture2D" uid="uid://g5l2klcy4wh7" path="res://assets/terrain/tileset.png" id="1_0g64o"]
 [ext_resource type="Script" path="res://sources/game/scripts/game.gd" id="1_gr32f"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cwh7hfoussrje" path="res://sources/player/input_guide.tscn" id="4_yw8ne"]
 [ext_resource type="PackedScene" uid="uid://b58jjeh5w0b3n" path="res://sources/enemy/enemy_spawner.tscn" id="5_olu8f"]
 [ext_resource type="PackedScene" uid="uid://cm5wx8q6yihns" path="res://sources/player/player.tscn" id="7_dx8t4"]
+[ext_resource type="Shader" path="res://sources/game/shaders/background.gdshader" id="7_l01e1"]
 
 [sub_resource type="Gradient" id="Gradient_wdd8r"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -204,12 +205,26 @@ custom_data_layer_0/name = "can_enemy_spawn"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_1k7lj")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_w1yh6"]
+frequency = 0.05
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j86dt"]
+seamless = true
+noise = SubResource("FastNoiseLite_w1yh6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_at52r"]
+shader = ExtResource("7_l01e1")
+shader_parameter/colors = PackedColorArray(1, 1, 1, 1, 0.172549, 0.909804, 0.956863, 1, 0.0156863, 0.517647, 0.819608, 1)
+shader_parameter/time_scale = 0.2
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_j86dt")
+
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_gr32f")
 transition_texture = SubResource("GradientTexture2D_ste8n")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-37, 10)
 navigation_polygon = SubResource("NavigationPolygon_v44vm")
 navigation_layers = 2
@@ -242,3 +257,11 @@ z_index = 10
 
 [node name="PlayerUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_6fsbk")]
 player = NodePath("../Player")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_at52r")
+offset_left = -252.0
+offset_top = -321.0
+offset_right = 516.0
+offset_bottom = 379.0
+mouse_filter = 2

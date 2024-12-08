@@ -36,6 +36,7 @@ TODO:
 	- enemy
 		[X] close range (walk into player)
 		[X] long range  (shoot laser at player)
+		[X] spawning
 	[ ] day/night cycle
 	[ ] game over
 	[ ] main menu

@@ -15,7 +15,7 @@ var state_machine := CallableStateMachine.new()
 
 func _ready() -> void:
 	state_machine.add_state("chase", Callable(), state_chase_physics_process)
-	state_machine.add_state("attack", Callable(), state_attack_physics_process)
+	state_machine.add_state("attack", Callable(), state_attack_physics_process, state_attack_enter)
 	state_machine.set_initial_state("chase")
 
 	health_component.depleted.connect(on_health_depleted)
@@ -58,7 +58,10 @@ func state_chase_physics_process(_delta: float) -> void:
 		state_machine.change_state("attack")
 
 
-const ATTACK_RANGE: float = 65.0
+func state_attack_enter() -> void:
+	shoot_cooldown_timer.start(0.5)
+
+const ATTACK_RANGE: float = 70.0
 func state_attack_physics_process(_delta: float) -> void:
 	var dir := global_position.direction_to(player.global_position).normalized()
 	velocity = dir.orthogonal() * MAX_SPEED
@@ -69,7 +72,7 @@ func state_attack_physics_process(_delta: float) -> void:
 		var laser := $LaserSpawnerComponent.spawn(
 			get_tree().get_first_node_in_group("projectiles")) as ProjectileComponent
 		laser.direction = dir
-		shoot_cooldown_timer.start()
+		shoot_cooldown_timer.start(2.5)
 
 	if global_position.distance_squared_to(player.global_position) > ATTACK_RANGE * ATTACK_RANGE:
 		state_machine.change_state("chase")

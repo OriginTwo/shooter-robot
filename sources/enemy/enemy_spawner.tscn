@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://b58jjeh5w0b3n"]
+
+[ext_resource type="Script" path="res://sources/enemy/scripts/enemy_spawner.gd" id="1_408qe"]
+[ext_resource type="PackedScene" uid="uid://7wy4rpgf0k20" path="res://sources/enemy/enemy_close.tscn" id="2_2kk2q"]
+[ext_resource type="PackedScene" uid="uid://b50cwccqbq5g3" path="res://sources/enemy/enemy_range.tscn" id="3_mrv45"]
+[ext_resource type="Script" path="res://sources/component/spawner_component.gd" id="4_tun63"]
+[ext_resource type="PackedScene" uid="uid://bhvwiub4ml06f" path="res://sources/enemy/enemy_spawn_particle.tscn" id="5_nn1vl"]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_408qe")
+enemy_scenes = Array[PackedScene]([ExtResource("2_2kk2q"), ExtResource("3_mrv45")])
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ParticleSpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("4_tun63")
+scene = ExtResource("5_nn1vl")

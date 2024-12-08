@@ -45,6 +45,7 @@ func on_health_depleted() -> void:
 	queue_free()
 
 func on_health_changed(_new_amount: int) -> void:
+	AudioManager.play_sound("enemy_hurt")
 	$HurtShakeComponent.shake()
 	$FlashComponent.flash()
 
@@ -66,6 +67,7 @@ func state_attack_enter() -> void:
 	await get_tree().create_timer(0.2).timeout
 	$AttackShakeComponent.shake()
 	await get_tree().create_timer(0.2).timeout
+	AudioManager.play_sound("enemy_explode")
 	$ExplosionSpawnerComponent.spawn(get_tree().get_first_node_in_group("particles"))
 	queue_free()
 

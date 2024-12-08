@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundDesc" load_steps=3 format=3 uid="uid://bu6qsc1os45tq"]
+
+[ext_resource type="Script" path="res://resources/scripts/sound_desc.gd" id="1_lmkav"]
+[ext_resource type="AudioStream" uid="uid://b16khf5a3usq3" path="res://assets/audio/blip.wav" id="2_rf4t5"]
+
+[resource]
+script = ExtResource("1_lmkav")
+name = &"blip"
+stream = ExtResource("2_rf4t5")
+volume = -4.0
+pitch_scale = 1.2
+pitch_randomness = 0.0
+limit = 1

@@ -15,6 +15,7 @@ func _input(event: InputEvent) -> void:
 		return
 
 	if event.pressed && event.button_index == MOUSE_BUTTON_LEFT:
+		AudioManager.play_sound("blip")
 		SceneTransition.transition_first_half()
 		await SceneTransition.transitioned_half
 		get_tree().change_scene_to_file("res://sources/game/game.tscn")

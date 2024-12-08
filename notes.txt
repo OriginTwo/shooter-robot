@@ -38,7 +38,8 @@ TODO:
 		[X] long range  (shoot laser at player)
 		[X] spawning
 	[X] game over
-	[ ] audio
+	[X] sound
+	[ ] music
 	[X] juice
 	[ ] difficulty curve
 	[ ] balance + playtest
@@ -47,4 +48,3 @@ EXTRA OPTIONAL:
 	[ ] random event
 		- bullet hell
 		- floor is lava
-	[ ] main menu

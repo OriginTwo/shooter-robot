@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundDesc" load_steps=3 format=3 uid="uid://bnfglsdoml0iw"]
+
+[ext_resource type="Script" path="res://resources/scripts/sound_desc.gd" id="1_76mg6"]
+[ext_resource type="AudioStream" uid="uid://de350mswr0b1s" path="res://assets/audio/player_die.wav" id="2_gdnjj"]
+
+[resource]
+script = ExtResource("1_76mg6")
+name = &"player_die"
+stream = ExtResource("2_gdnjj")
+volume = -6.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+limit = 1

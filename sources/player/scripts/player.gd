@@ -50,7 +50,7 @@ func _ready() -> void:
 	SignalBus.upgrades_bought.connect(on_upgrades_bought)
 
 	health_component.depleted.connect(on_health_depleted)
-	health_component.changed.connect(on_health_changed)
+	health_component.reduced.connect(on_health_reduced)
 
 	set_deferred("points", 0)
 
@@ -58,6 +58,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot") &&\
 			shoot_cooldown_timer.is_stopped() &&\
 			energy >= SHOOTING_ENERGY_CONSUMPTION:
+		AudioManager.play_sound("player_shoot")
 		var mouse_pos := get_global_mouse_position()
 		var laser := laser_spawner_component.spawn(projectiles_container) as ProjectileComponent
 		laser.direction = laser_spawner_component.global_position.direction_to(mouse_pos)
@@ -80,12 +81,14 @@ func on_upgrades_bought(desc: UpgradesDesc) -> void:
 			energy_recharge_rate += 10.0
 
 func on_health_depleted() -> void:
+	AudioManager.play_sound("player_die")
 	$DeadEffectSpawnerComponent.spawn(get_tree().get_first_node_in_group("particles"))
 	SignalBus.game_over.emit()
 	await get_tree().create_timer(0.2).timeout
 	queue_free()
 
-func on_health_changed(_new_amount: int) -> void:
+func on_health_reduced() -> void:
+	AudioManager.play_sound("player_hurt")
 	$ShakeComponent.shake()
 	$FlashComponent.flash()
 	VfxUtil.shake_camera()

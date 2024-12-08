@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundDesc" load_steps=3 format=3 uid="uid://drfgowf58e73m"]
+
+[ext_resource type="Script" path="res://resources/scripts/sound_desc.gd" id="1_wp0gb"]
+[ext_resource type="AudioStream" uid="uid://chujjjjoeycp4" path="res://assets/audio/upgrades_bought.wav" id="2_1d30t"]
+
+[resource]
+script = ExtResource("1_wp0gb")
+name = &"upgrades_bought"
+stream = ExtResource("2_1d30t")
+volume = -7.0
+pitch_scale = 1.0
+pitch_randomness = 0.1
+limit = 10

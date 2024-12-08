@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundDesc" load_steps=3 format=3 uid="uid://cncbxn4oore1g"]
+
+[ext_resource type="Script" path="res://resources/scripts/sound_desc.gd" id="1_8ctxv"]
+[ext_resource type="AudioStream" uid="uid://dvqymr5bxogfw" path="res://assets/audio/enemy_hurt.wav" id="2_5fb0f"]
+
+[resource]
+script = ExtResource("1_8ctxv")
+name = &"enemy_hurt"
+stream = ExtResource("2_5fb0f")
+volume = -5.0
+pitch_scale = 1.0
+pitch_randomness = 0.2
+limit = 16

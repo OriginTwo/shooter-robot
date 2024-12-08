@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundDesc" load_steps=3 format=3 uid="uid://cmi1hqvckgyk8"]
+
+[ext_resource type="Script" path="res://resources/scripts/sound_desc.gd" id="1_80vk2"]
+[ext_resource type="AudioStream" uid="uid://8yetrtsuk4ot" path="res://assets/audio/player_laser_timeout.wav" id="2_b2gyd"]
+
+[resource]
+script = ExtResource("1_80vk2")
+name = &"player_laser_timeout"
+stream = ExtResource("2_b2gyd")
+volume = -3.0
+pitch_scale = 1.0
+pitch_randomness = 0.2
+limit = 10

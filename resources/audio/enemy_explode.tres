@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundDesc" load_steps=3 format=3 uid="uid://c4jlt7mkgpbi1"]
+
+[ext_resource type="Script" path="res://resources/scripts/sound_desc.gd" id="1_gc3ii"]
+[ext_resource type="AudioStream" uid="uid://b4mtiwvap30gs" path="res://assets/audio/enemy_explode.wav" id="2_44rub"]
+
+[resource]
+script = ExtResource("1_gc3ii")
+name = &"enemy_explode"
+stream = ExtResource("2_44rub")
+volume = -5.0
+pitch_scale = 1.0
+pitch_randomness = 0.1
+limit = 10

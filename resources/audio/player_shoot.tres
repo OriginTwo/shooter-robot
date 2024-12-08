@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundDesc" load_steps=3 format=3 uid="uid://8w4bouj80kec"]
+
+[ext_resource type="Script" path="res://resources/scripts/sound_desc.gd" id="1_xtm1m"]
+[ext_resource type="AudioStream" uid="uid://boiveyw7vidyo" path="res://assets/audio/player_shoot.wav" id="2_pi2fo"]
+
+[resource]
+script = ExtResource("1_xtm1m")
+name = &"player_shoot"
+stream = ExtResource("2_pi2fo")
+volume = -4.0
+pitch_scale = 1.0
+pitch_randomness = 0.2
+limit = 10

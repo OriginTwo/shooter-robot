@@ -31,6 +31,7 @@ func _ready() -> void:
 	player.points_changed.connect(on_player_points_changed)
 
 func on_upgrades_button_pressed(desc: UpgradesDesc) -> void:
+	AudioManager.play_sound("upgrades_bought")
 	var points_required := desc.points
 	desc.points += desc.points_increase
 	player.points -= points_required

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundDesc" load_steps=3 format=3 uid="uid://u1cjevy3cxqw"]
+
+[ext_resource type="Script" path="res://resources/scripts/sound_desc.gd" id="1_umabs"]
+[ext_resource type="AudioStream" uid="uid://bc5vretu6n7oe" path="res://assets/audio/player_hurt.wav" id="2_10517"]
+
+[resource]
+script = ExtResource("1_umabs")
+name = &"player_hurt"
+stream = ExtResource("2_10517")
+volume = -4.0
+pitch_scale = 1.0
+pitch_randomness = 0.2
+limit = 10

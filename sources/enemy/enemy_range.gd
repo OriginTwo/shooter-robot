@@ -46,6 +46,7 @@ func on_health_depleted() -> void:
 	queue_free()
 
 func on_health_changed(_new_amount: int) -> void:
+	AudioManager.play_sound("enemy_hurt")
 	$ShakeComponent.shake()
 	$FlashComponent.flash()
 
@@ -74,6 +75,7 @@ func state_attack_physics_process(_delta: float) -> void:
 	move_and_slide()
 
 	if shoot_cooldown_timer.is_stopped():
+		AudioManager.play_sound("enemy_shoot")
 		$ShootParticle.emitting = true
 		var laser := $LaserSpawnerComponent.spawn(
 			get_tree().get_first_node_in_group("projectiles")) as ProjectileComponent

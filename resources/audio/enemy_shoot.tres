@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundDesc" load_steps=3 format=3 uid="uid://p5dq3ad27a8d"]
+
+[ext_resource type="Script" path="res://resources/scripts/sound_desc.gd" id="1_wp3ny"]
+[ext_resource type="AudioStream" uid="uid://dh5rmpr3ocm44" path="res://assets/audio/enemy_shoot.wav" id="2_sfq76"]
+
+[resource]
+script = ExtResource("1_wp3ny")
+name = &"enemy_shoot"
+stream = ExtResource("2_sfq76")
+volume = -5.0
+pitch_scale = 1.0
+pitch_randomness = 0.2
+limit = 16

@@ -17,6 +17,7 @@ func _physics_process(delta: float) -> void:
 	global_position += direction * speed * delta
 
 func on_hit() -> void:
+	AudioManager.play_sound("player_laser_timeout")
 	var particle := hit_spawner.spawn(get_tree().get_first_node_in_group("particles")) as Node2D
 	if rotate_hit_spawner:
 		particle.global_rotation = direction.angle()

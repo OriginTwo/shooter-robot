@@ -12,7 +12,7 @@ const COLLECTION_RADIUS: float = 4.0
 var velocity: Vector2
 
 func _ready() -> void:
-	SignalBus.game_over.connect(queue_free)
+	SignalBus.game_over.connect(on_game_over)
 
 func _physics_process(delta: float) -> void:
 	var player_pos := player.global_position
@@ -34,3 +34,8 @@ func _physics_process(delta: float) -> void:
 		player.points += 1
 		$SpawnerComponent.spawn(get_tree().get_first_node_in_group("particles"))
 		queue_free()
+
+
+func on_game_over() -> void:
+	set_physics_process(false)
+	queue_free()

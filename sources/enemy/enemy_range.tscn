@@ -93,11 +93,14 @@ hue_variation_max = -2.23517e-08
 anim_offset_max = 1.0
 
 [node name="EnemyRange" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_kgydv")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 target_desired_distance = 60.0
+navigation_layers = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -5)

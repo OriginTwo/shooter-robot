@@ -98,6 +98,8 @@ radius = 4.0
 radius = 4.0
 
 [node name="EnemyClose" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_1gt6t")
 

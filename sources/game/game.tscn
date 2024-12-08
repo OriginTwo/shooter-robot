@@ -1,9 +1,14 @@
-[gd_scene load_steps=10 format=4 uid="uid://d2v5rwbvgpdx0"]
+[gd_scene load_steps=11 format=4 uid="uid://d2v5rwbvgpdx0"]
 
 [ext_resource type="Texture2D" uid="uid://g5l2klcy4wh7" path="res://assets/terrain/tileset.png" id="1_0g64o"]
 [ext_resource type="PackedScene" uid="uid://bdaeqkxl05bmp" path="res://sources/player/player_ui.tscn" id="3_6fsbk"]
 [ext_resource type="PackedScene" uid="uid://b58jjeh5w0b3n" path="res://sources/enemy/enemy_spawner.tscn" id="5_olu8f"]
 [ext_resource type="PackedScene" uid="uid://cm5wx8q6yihns" path="res://sources/player/player.tscn" id="7_dx8t4"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_v44vm"]
+vertices = PackedVector2Array(458.367, 241.148, -84.0938, 249.828, -88.8984, -262.031, 477.609, -263.961)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-99, -272, 488, -274, 468, 251, -94, 260)])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_soo77"]
 vertices = PackedVector2Array(4, 4, -4, 4, -4, -4, 4, -4)
@@ -189,6 +194,11 @@ sources/0 = SubResource("TileSetAtlasSource_1k7lj")
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-37, 10)
+navigation_polygon = SubResource("NavigationPolygon_v44vm")
+navigation_layers = 2
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -5

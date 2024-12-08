@@ -10,7 +10,7 @@ extends PanelContainer
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 
 func _ready() -> void:
-	on_upgrades_button_mouse_exited()
+	reset_upgrades_labels()
 
 	for i in len(upgrades_descs) - 1:
 		var button := base_upgrades_button.duplicate()
@@ -19,27 +19,29 @@ func _ready() -> void:
 		var desc := upgrades_descs[i + 1]
 		button.icon = desc.icon
 		button.pressed.connect(on_upgrades_button_pressed.bind(desc))
-		button.mouse_entered.connect(on_upgrades_button_mouse_entered.bind(desc))
-		button.mouse_exited.connect(on_upgrades_button_mouse_exited)
+		button.mouse_entered.connect(update_upgrades_labels.bind(desc))
+		button.mouse_exited.connect(reset_upgrades_labels)
 
 	var desc := upgrades_descs[0]
 	base_upgrades_button.icon = desc.icon
 	base_upgrades_button.pressed.connect(on_upgrades_button_pressed.bind(desc))
-	base_upgrades_button.mouse_entered.connect(on_upgrades_button_mouse_entered.bind(desc))
-	base_upgrades_button.mouse_exited.connect(on_upgrades_button_mouse_exited)
+	base_upgrades_button.mouse_entered.connect(update_upgrades_labels.bind(desc))
+	base_upgrades_button.mouse_exited.connect(reset_upgrades_labels)
 
 	player.points_changed.connect(on_player_points_changed)
 
 func on_upgrades_button_pressed(desc: UpgradesDesc) -> void:
-	player.points -= desc.points
-	SignalBus.upgrades_bought.emit(desc)
+	var points_required := desc.points
 	desc.points += desc.points_increase
+	player.points -= points_required
+	SignalBus.upgrades_bought.emit(desc)
+	update_upgrades_labels(desc)
 
-func on_upgrades_button_mouse_entered(desc: UpgradesDesc) -> void:
+func update_upgrades_labels(desc: UpgradesDesc) -> void:
 	points_label.text = "%d points" % desc.points
 	upgrade_description_label.text = desc.description
 
-func on_upgrades_button_mouse_exited() -> void:
+func reset_upgrades_labels() -> void:
 	points_label.text = ""
 	upgrade_description_label.text = ""
 

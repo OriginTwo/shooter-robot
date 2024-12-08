@@ -80,7 +80,9 @@ func on_upgrades_bought(desc: UpgradesDesc) -> void:
 			energy_recharge_rate += 10.0
 
 func on_health_depleted() -> void:
+	$DeadEffectSpawnerComponent.spawn(get_tree().get_first_node_in_group("particles"))
 	SignalBus.game_over.emit()
+	await get_tree().create_timer(0.2).timeout
 	queue_free()
 
 func on_health_changed(_new_amount: int) -> void:

@@ -216,9 +216,11 @@ position = Vector2(0, -4)
 position_smoothing_speed = 2.0
 
 [node name="InputGuide" parent="Player" instance=ExtResource("4_yw8ne")]
+z_index = 100
 position = Vector2(0, -14)
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("tile_map_layer") instance=ExtResource("5_olu8f")]
+y_sort_enabled = true
 tile_map_layer = NodePath("../TileMapLayer")
 
 [node name="Projectiles" type="Node2D" parent="." groups=["projectiles"]]

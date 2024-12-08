@@ -1,6 +1,9 @@
 extends Node2D
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var timer: Timer = $Timer
+
+func _ready() -> void:
+	timer.timeout.connect(queue_free)
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("move_n") ||\

@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 SignalBus="*res://sources/autoloads/scripts/signal_bus.gd"
 VfxUtil="*res://sources/autoloads/scripts/vfx_util.gd"
+SceneTransition="*res://sources/autoloads/scene_transition.tscn"
+Global="*res://sources/autoloads/scripts/global.gd"
 
 [display]
 

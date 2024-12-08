@@ -248,8 +248,10 @@ explosiveness = 0.7
 [node name="Ring" type="Node2D" parent="."]
 script = ExtResource("4_dt1eb")
 radius = 30.0
+radius_start_percent = 0.1
 
 [node name="Ring2" type="Node2D" parent="."]
 script = ExtResource("4_dt1eb")
 radius = 80.0
+radius_start_percent = 0.1
 thickness = 8.0

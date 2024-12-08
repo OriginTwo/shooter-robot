@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://d2v5rwbvgpdx0"]
+[gd_scene load_steps=15 format=4 uid="uid://d2v5rwbvgpdx0"]
 
 [ext_resource type="Texture2D" uid="uid://g5l2klcy4wh7" path="res://assets/terrain/tileset.png" id="1_0g64o"]
 [ext_resource type="Script" path="res://sources/game/scripts/game.gd" id="1_gr32f"]
@@ -6,6 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://cwh7hfoussrje" path="res://sources/player/input_guide.tscn" id="4_yw8ne"]
 [ext_resource type="PackedScene" uid="uid://b58jjeh5w0b3n" path="res://sources/enemy/enemy_spawner.tscn" id="5_olu8f"]
 [ext_resource type="PackedScene" uid="uid://cm5wx8q6yihns" path="res://sources/player/player.tscn" id="7_dx8t4"]
+
+[sub_resource type="Gradient" id="Gradient_wdd8r"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ste8n"]
+gradient = SubResource("Gradient_wdd8r")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v44vm"]
 vertices = PackedVector2Array(458.367, 241.148, -84.0938, 249.828, -88.8984, -262.031, 477.609, -263.961)
@@ -197,6 +207,7 @@ sources/0 = SubResource("TileSetAtlasSource_1k7lj")
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_gr32f")
+transition_texture = SubResource("GradientTexture2D_ste8n")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-37, 10)

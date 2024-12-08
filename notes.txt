@@ -37,7 +37,7 @@ TODO:
 		[X] close range (walk into player)
 		[X] long range  (shoot laser at player)
 		[X] spawning
-	[ ] game over
+	[X] game over
 	[ ] audio
 	[X] juice
 	[ ] difficulty curve

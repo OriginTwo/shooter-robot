@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cwk2gbkd7nult"]
+[gd_scene load_steps=14 format=3 uid="uid://cwk2gbkd7nult"]
 
 [ext_resource type="Script" path="res://sources/autoloads/scripts/audio_manager.gd" id="1_ojxq4"]
 [ext_resource type="Script" path="res://resources/scripts/sound_desc.gd" id="2_0s3pi"]
@@ -12,9 +12,13 @@
 [ext_resource type="Resource" uid="uid://cmi1hqvckgyk8" path="res://resources/audio/player_laser_timeout.tres" id="9_hf41r"]
 [ext_resource type="Resource" uid="uid://bygpvdepdu0ve" path="res://resources/audio/points_collected.tres" id="10_ds7ay"]
 [ext_resource type="Resource" uid="uid://drfgowf58e73m" path="res://resources/audio/upgrades_bought.tres" id="12_l5l0w"]
+[ext_resource type="AudioStream" uid="uid://660pwefm2xqm" path="res://assets/music/Three Red Hearts - Deep Blue.ogg" id="13_g0034"]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_ojxq4")
 sounds = Array[ExtResource("2_0s3pi")]([ExtResource("3_4f27t"), ExtResource("4_xf870"), ExtResource("5_c6j3x"), ExtResource("6_kbv25"), ExtResource("7_8bb2r"), ExtResource("8_und2u"), ExtResource("9_hf41r"), ExtResource("9_e26ky"), ExtResource("10_ds7ay"), ExtResource("12_l5l0w")])
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_g0034")
+volume_db = -17.0
+playback_type = 1

@@ -39,7 +39,7 @@ TODO:
 		[X] spawning
 	[X] game over
 	[X] sound
-	[ ] music
+	[X] music
 	[X] juice
 	[ ] difficulty curve
 	[ ] balance + playtest

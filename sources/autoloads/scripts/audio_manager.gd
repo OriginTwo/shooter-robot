@@ -14,6 +14,10 @@ func play_music() -> void:
 	if !music_player.playing:
 		music_player.play()
 
+func tween_music_pitch(pitch: float, duration: float) -> void:
+	create_tween().tween_property(music_player, "pitch_scale", pitch, duration)
+	#music_player.pitch_scale = pitch
+
 func play_sound(sound_name: StringName) -> void:
 	if !sound_dict.has(sound_name):
 		push_warning("Sound name '%s' doesn't exist" % sound_name)
